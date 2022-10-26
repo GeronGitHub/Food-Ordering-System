@@ -18,24 +18,32 @@ import lombok.NoArgsConstructor;
 @Builder
 
 @Entity
-@Table(name = "food_details")
-public class Food {
+@Table(name = "order_details")
+public class Order {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "food_id")
+	@Column(name = "order_id")
 	private int id;
 	
-	@Column(name = "food_category")
-	private String category; //CATEGORIES INCLUDE: CHICKEN, CHINESE, PIZZA, KEBAB, DESSERTS, ENGLISH
+	@Column(name = "order_date")
+	private String date;
 	
-	@Column(name = "food_name")
-	private String name;
+	@Column(name = "order_status")
+	private int status; //ACCEPTED, DENIED, PROCESSING
 	
-	@Column(name = "food_price")
-	private double price;
+	@Column(name = "order_value")
+	private double value;
 	
-	@Column(name = "food_isSpicy")
-	private boolean isSpicy;
-
+	@Column(name = "order_customer_id")
+	private int customer_id;
+	
+	@Column(name = "order_food_id")
+	private int food_id;
+	
+	@Column(name = "order_delivered")
+	private boolean delivered;
+	
+	
+	
 }
