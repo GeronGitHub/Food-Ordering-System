@@ -48,7 +48,7 @@ public class FoodServiceImpl implements FoodService {
 	}
 
 	@Override
-	public List<Food> getFoodByPrice(int price) {
+	public List<Food> getFoodByPrice(double price) {
 		
 		return this.foodRepository.findByPrice(price);
 	}
@@ -76,17 +76,44 @@ public class FoodServiceImpl implements FoodService {
 	}
 
 	@Override
-	public Food updateFood(Food food) throws FoodNotFoundException {
+	public Food updateAllFoodDetails(int id, String category, String name, double price, boolean isSpicy) throws FoodNotFoundException {
 		
-		Optional<Food> optionalFoodFoundByID = this.foodRepository.findById(food.getId());	
+		Food updatedFood = null;
 		
-		if(optionalFoodFoundByID.isPresent()) {
-			
+		Optional<Food> optionalFoodFoundByID = this.foodRepository.findById(id);	
+		
+		if(!optionalFoodFoundByID.isPresent()) {
 			throw new FoodNotFoundException();
 		}
+		else {
+			int rows = this.foodRepository.updateAllFoodDetails(id, category, name, price, isSpicy);
+			if (rows > 0) {
+				updatedFood = this.foodRepository.findById(id).get();
+			}
+		}
 		
-		return this.foodRepository.save(food);
+		return updatedFood;
 		
+	}
+	
+	@Override
+	public Food updateFoodPrice(int id, double price) throws FoodNotFoundException {
+		
+		Food updatedFood = null;
+		
+		Optional<Food> optionalFoodFoundByID = this.foodRepository.findById(id);	
+		
+		if(!optionalFoodFoundByID.isPresent()) {
+			throw new FoodNotFoundException();
+		}
+		else {
+			int rows = this.foodRepository.updateFoodPrice(id, price);
+			if (rows > 0) {
+				updatedFood = this.foodRepository.findById(id).get();
+			}
+		}
+		
+		return updatedFood;
 	}
 
 	@Override

@@ -28,9 +28,20 @@ public interface FoodRepository extends JpaRepository<Food, Integer>{
 	//FIND FOOD BY IF IT IS SPICY
 	List<Food> findByIsSpicy(boolean isSpicy);
 	
-	//UPDATING
-	@Modifying //FOR UPDATE AND DELETE QUERIES
+	//FIND FOOD BY CATEGORY AND PRICE
+	@Query("select f from Food f where f.category = :category and f.price <= :price")
+	List<Food> findByCategoryAndPrice(String category, double price);
+	
+	//UPDATING ALL DETAILS
+	@Modifying
+	@Query("update Food f set f.category = :category, f.name = :name, f.price = :price, f.isSpicy = :isSpicy where f.id = :id")
+	int updateAllFoodDetails(int id, String category, String name, double price, boolean isSpicy);
+	
+	//UPDATE ONLY THE PRICE OF THE FOOD
+	@Modifying
 	@Query("update Food f set f.price = :price where f.id = :id")
-	int updateProductDetails(int id, double price);
-
+	int updateFoodPrice(int id, double price);
+	
+	
+	
 }
