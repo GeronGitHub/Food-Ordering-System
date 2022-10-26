@@ -64,7 +64,7 @@ public class CustomerController {
 	}
 	
 	@GetMapping("/customers/street/{street}/postcode/{postcode}")
-	public ResponseEntity<?> getCustomerByID(@PathVariable("street") String street, @PathVariable("postcode") String postcode){
+	public ResponseEntity<?> getCustomerByAddress(@PathVariable("street") String street, @PathVariable("postcode") String postcode){
 		
 		try {
 			
