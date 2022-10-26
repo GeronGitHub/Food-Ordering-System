@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.qa.foodordering.entity.Order;
 import com.qa.foodordering.exception.OrderAlreadyExistsException;
 import com.qa.foodordering.exception.OrderNotFoundException;
 import com.qa.foodordering.repository.OrderRepository;
 
+@Service
 public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
