@@ -27,7 +27,8 @@ public class Food {
 	private int id;
 	
 	@Column(name = "food_category")
-	private String category;
+	private String category; //CATEGORIES INCLUDE: CHICKEN, CHINESE, PIZZA, 
+							 //KEBAB, DESSERTS, ENGLISH
 	
 	@Column(name = "food_name")
 	private String name;

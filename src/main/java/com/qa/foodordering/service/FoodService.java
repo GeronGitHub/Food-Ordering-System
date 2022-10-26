@@ -15,10 +15,11 @@ public interface FoodService {
 	public Food getFoodByID(int id) throws FoodNotFoundException;
 	public List<Food> getFoodByCategory(String category);
 	public List<Food> getFoodByName(String name);
-	public List<Food> getFoodByPrice(int price);
+	public List<Food> getFoodByPrice(double price);
 	public List<Food> getFoodByIsSpicy(boolean isSpicy);
 	public Food addFood(Food food) throws FoodAlreadyExistsException;
-	public Food updateFood(Food food) throws FoodNotFoundException;
+	public Food updateAllFoodDetails(int id, String category, String name, double price, boolean isSpicy) throws FoodNotFoundException;
+	public Food updateFoodPrice(int id, double price) throws FoodNotFoundException;
 	public boolean deleteFood(int id) throws FoodNotFoundException;
-
+	
 }
