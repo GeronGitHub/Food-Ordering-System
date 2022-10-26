@@ -25,15 +25,18 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "customer_id")
 	private int id;
-
+	
 	@Column(name = "customer_name")
 	private String name;
 	
-	@Column(name = "customer_address")
-	private String address;
+	@Column(name = "customer_street")
+	private String street;
 	
 	@Column(name = "customer_postcode")
 	private String postcode;
+	
+	@Column(name = "customer_username")
+	private String username;
 	
 	@Column(name = "customer_password")
 	private String password;
