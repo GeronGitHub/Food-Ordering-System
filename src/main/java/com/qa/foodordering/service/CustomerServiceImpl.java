@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.qa.foodordering.entity.Customer;
 import com.qa.foodordering.exception.CustomerAlreadyExistsException;
 import com.qa.foodordering.exception.CustomerNotFoundException;
 import com.qa.foodordering.repository.CustomerRepository;
 
+@Service
 public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
@@ -39,9 +41,9 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public List<Customer> getCustomerByAddress(String address) {
+	public List<Customer> getCustomerByStreet(String street) {
 		
-		return this.customerRepository.findByAddress(address);
+		return this.customerRepository.findByStreet(street);
 	}
 
 	@Override
@@ -51,9 +53,9 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 	
 	@Override
-	public List<Customer> getCustomerByAddressAndPostcode(String address, String postcode) {
+	public List<Customer> getCustomerByStreetAndPostcode(String street, String postcode) {
 		
-		return this.customerRepository.findByAddressAndPostcode(address, postcode);
+		return this.customerRepository.findByStreetAndPostcode(street, postcode);
 	}
 
 	@Override
@@ -69,7 +71,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer updateCustomerDetails(int id, String name, String address, String postcode, String password) throws CustomerNotFoundException{
+	public Customer updateCustomerDetails(int id, String name, String street, String postcode, String username, String password) throws CustomerNotFoundException{
 		
 		Customer updatedCustomer = null;
 		
@@ -79,7 +81,7 @@ public class CustomerServiceImpl implements CustomerService {
 			throw new CustomerNotFoundException();
 		}
 		else {
-			int rows = this.customerRepository.updateCustomerDetails(id, name, address, postcode, password);
+			int rows = this.customerRepository.updateCustomerDetails(id, name, street, postcode, username, password);
 			if (rows > 0) {
 				updatedCustomer = this.customerRepository.findById(id).get();
 			}
@@ -89,7 +91,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer updateAddressAndPostCode(int id, String address, String postcode) throws CustomerNotFoundException {
+	public Customer updateStreetAndPostCode(int id, String street, String postcode) throws CustomerNotFoundException {
 		
 		Customer updatedCustomer = null;
 		
@@ -99,7 +101,7 @@ public class CustomerServiceImpl implements CustomerService {
 			throw new CustomerNotFoundException();
 		}
 		else {
-			int rows = this.customerRepository.updateCustomerAddressAndPostCode(id, address, postcode);
+			int rows = this.customerRepository.updateCustomerStreetAndPostCode(id, street, postcode);
 			if (rows > 0) {
 				updatedCustomer = this.customerRepository.findById(id).get();
 			}

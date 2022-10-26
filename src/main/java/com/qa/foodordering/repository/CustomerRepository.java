@@ -21,22 +21,22 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 	//FIND CUSTOMER BY POSTCODE
 	List<Customer> findByPostcode(String postcode);
 	
-	//FIND CUSTOMER BY ADDRESS
-	List<Customer> findByAddress(String address);
+	//FIND CUSTOMER BY street
+	List<Customer> findByStreet(String street);
 	
 	//FIND CUSTOMER BY FULL ADDRES
-	@Query("select c from Customer c where c.address = :address and c.postcode = :postcode")
-	List<Customer> findByAddressAndPostcode(String address, String postcode);
+	@Query("select c from Customer c where c.street = :street and c.postcode = :postcode")
+	List<Customer> findByStreetAndPostcode(String street, String postcode);
 	
 	//UPDATING ALL OF THE CUSTOMERS DETAILS
 	@Modifying
-	@Query("update Customer c set c.name = :name, c.address = :address, c.postcode = :postcode, c.password = :password where c.id = :id")
-	int updateCustomerDetails(int id, String name, String address, String postcode, String password);
+	@Query("update Customer c set c.name = :name, c.street = :street, c.postcode = :postcode, c.username = :username, c.password = :password where c.id = :id")
+	int updateCustomerDetails(int id, String name, String street, String postcode, String username, String password);
 	
-	//UPDATING ONLY THE ADDRESS OF THE CUSTOMER
+	//UPDATING ONLY THE street OF THE CUSTOMER
 	@Modifying
-	@Query("update Customer c set c.address = :address, c.postcode = :postcode where c.id = :id")
-	int updateCustomerAddressAndPostCode(int id, String address, String postcode);
+	@Query("update Customer c set c.street = :street, c.postcode = :postcode where c.id = :id")
+	int updateCustomerStreetAndPostCode(int id, String street, String postcode);
 
 }
 

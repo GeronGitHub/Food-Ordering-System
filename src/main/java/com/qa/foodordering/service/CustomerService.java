@@ -14,12 +14,12 @@ public interface CustomerService {
 	public List<Customer> getAllCustomers();
 	public Customer getCustomerByID(int id) throws CustomerNotFoundException;
 	public List<Customer> getCustomerByName(String name);
-	public List<Customer> getCustomerByAddress(String address);
+	public List<Customer> getCustomerByStreet(String street);
 	public List<Customer> getCustomerByPostCode(String postcode);
-	public List<Customer> getCustomerByAddressAndPostcode(String address, String postcode);
+	public List<Customer> getCustomerByStreetAndPostcode(String street, String postcode);
 	public Customer addCustomer(Customer customer) throws CustomerAlreadyExistsException;
-	public Customer updateCustomerDetails(int id, String name, String address, String postcode, String password) throws CustomerNotFoundException;
-	public Customer updateAddressAndPostCode(int id, String address, String postcode) throws CustomerNotFoundException;
+	public Customer updateCustomerDetails(int id, String name, String street, String postcode, String username, String password) throws CustomerNotFoundException;
+	public Customer updateStreetAndPostCode(int id, String street, String postcode) throws CustomerNotFoundException;
 	public boolean deleteCustomer(int id) throws CustomerNotFoundException;
 	
 }
