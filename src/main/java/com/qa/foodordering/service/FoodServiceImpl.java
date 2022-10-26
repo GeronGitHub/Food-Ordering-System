@@ -66,7 +66,7 @@ public class FoodServiceImpl implements FoodService {
 		Optional<Food> optionalFoodFoundByID = this.foodRepository.findById(food.getId());	
 		
 		if(optionalFoodFoundByID.isPresent()) {
-			
+				
 			throw new FoodAlreadyExistsException();
 		}
 		

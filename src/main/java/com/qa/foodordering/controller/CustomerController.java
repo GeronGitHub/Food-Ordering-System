@@ -151,7 +151,6 @@ public class CustomerController {
 			e.printStackTrace();
 		}
 		
-		
 		return responseEntity;
 	}
 }
