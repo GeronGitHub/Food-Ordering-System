@@ -30,20 +30,18 @@ public class Order {
 	private String date;
 	
 	@Column(name = "order_status")
-	private int status; //ACCEPTED, DENIED, PROCESSING
+	private String status; //ACCEPTED, DENIED, PROCESSING
 	
 	@Column(name = "order_value")
 	private double value;
 	
 	@Column(name = "order_customer_id")
-	private int customer_id;
+	private int customerID;
 	
 	@Column(name = "order_food_id")
-	private int food_id;
+	private int foodID;
 	
 	@Column(name = "order_delivered")
 	private boolean delivered;
-	
-	
 	
 }
