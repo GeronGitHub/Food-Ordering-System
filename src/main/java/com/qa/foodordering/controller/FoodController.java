@@ -2,6 +2,8 @@ package com.qa.foodordering.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -83,7 +85,7 @@ public class FoodController {
 	}
 	
 	@PostMapping("/food")
-	public ResponseEntity<?> addFood(@RequestBody Food food) throws FoodAlreadyExistsException{
+	public ResponseEntity<?> addFood(@Valid @RequestBody Food food) throws FoodAlreadyExistsException{
 		
 		try {
 			Food addedFood = this.foodService.addFood(food);
