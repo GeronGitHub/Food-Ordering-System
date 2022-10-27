@@ -2,6 +2,8 @@ package com.qa.foodordering.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -82,7 +84,7 @@ public class CustomerController {
 	
 	
 	@PostMapping("/customers")
-	public ResponseEntity<?> addCustomer(@RequestBody Customer customer) throws CustomerAlreadyExistsException{
+	public ResponseEntity<?> addCustomer(@Valid @RequestBody Customer customer) throws CustomerAlreadyExistsException{
 		
 		try {
 			Customer addedCustomer = this.customerService.addCustomer(customer);
@@ -100,7 +102,7 @@ public class CustomerController {
 	}
 	
 	@PutMapping("/customers")
-	public ResponseEntity<?> updateCustomerDetails(@RequestBody Customer customer) throws CustomerNotFoundException{
+	public ResponseEntity<?> updateCustomerDetails(@Valid @RequestBody Customer customer) throws CustomerNotFoundException{
 		
 		try {
 			Customer updatedCustomer = this.customerService.updateCustomerDetails(customer.getId(), customer.getName(), customer.getStreet(), customer.getPostcode(), customer.getUsername(), customer.getPassword());
@@ -120,7 +122,7 @@ public class CustomerController {
 	}
 	
 	@PutMapping("/customer/update_address")
-	public ResponseEntity<?> updateCustomerAddress(@RequestBody Customer customer) throws CustomerNotFoundException{
+	public ResponseEntity<?> updateCustomerAddress(@Valid @RequestBody Customer customer) throws CustomerNotFoundException{
 		
 		try {
 			Customer updatedCustomer = this.customerService.updateStreetAndPostCode(customer.getId(), customer.getStreet(), customer.getPostcode());

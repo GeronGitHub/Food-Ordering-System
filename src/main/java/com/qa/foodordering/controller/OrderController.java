@@ -2,6 +2,8 @@ package com.qa.foodordering.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,12 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qa.foodordering.entity.Customer;
-import com.qa.foodordering.entity.Food;
 import com.qa.foodordering.entity.Order;
-import com.qa.foodordering.exception.CustomerAlreadyExistsException;
-import com.qa.foodordering.exception.CustomerNotFoundException;
-import com.qa.foodordering.exception.FoodNotFoundException;
 import com.qa.foodordering.exception.OrderAlreadyExistsException;
 import com.qa.foodordering.exception.OrderNotFoundException;
 import com.qa.foodordering.service.OrderServiceImpl;
@@ -69,7 +66,7 @@ public class OrderController {
 	}
 	
 	@PostMapping("/orders")
-	public ResponseEntity<?> addOrder(@RequestBody Order order) throws OrderAlreadyExistsException{
+	public ResponseEntity<?> addOrder(@Valid @RequestBody Order order) throws OrderAlreadyExistsException{
 		
 		try {
 			Order addedOrder = this.orderService.addOrder(order);
@@ -87,7 +84,7 @@ public class OrderController {
 	}
 	
 	@PutMapping("/orders")
-	public ResponseEntity<?> updateOrderDetails(@RequestBody Order order) throws OrderNotFoundException{
+	public ResponseEntity<?> updateOrderDetails(@Valid @RequestBody Order order) throws OrderNotFoundException{
 		
 		try {
 			Order updatedOrder = this.orderService.updateAllOrderDetails(order.getId(), order.getDate(), order.getCustomerID(), order.getStatus(), order.isDelivered(), order.getValue());
@@ -107,7 +104,7 @@ public class OrderController {
 	}
 	
 	@PutMapping("/orders/update_status_and_delivery")
-	public ResponseEntity<?> updateStatusAndDelivery(@RequestBody Order order) throws OrderNotFoundException{
+	public ResponseEntity<?> updateStatusAndDelivery(@Valid @RequestBody Order order) throws OrderNotFoundException{
 		
 		try {
 			Order updatedOrder = this.orderService.updateOrderStatusAndDelivery(order.getId(), order.getStatus(), order.isDelivered());

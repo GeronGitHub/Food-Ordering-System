@@ -103,7 +103,7 @@ public class FoodController {
 	}
 	
 	@PutMapping("/food")
-	public ResponseEntity<?> updateAllFoodDetails(@RequestBody Food food) throws FoodNotFoundException{
+	public ResponseEntity<?> updateAllFoodDetails(@Valid @RequestBody Food food) throws FoodNotFoundException{
 		
 		try {
 			Food updatedFood = this.foodService.updateAllFoodDetails(food.getId(), food.getCategory(), food.getName(), food.getPrice(), food.isSpicy());
@@ -123,7 +123,7 @@ public class FoodController {
 	}
 	
 	@PutMapping("/food/update_price")
-	public ResponseEntity<?> updateFoodPrice(@RequestBody Food food) throws FoodNotFoundException{
+	public ResponseEntity<?> updateFoodPrice(@Valid @RequestBody Food food) throws FoodNotFoundException{
 		
 		try {
 			Food updatedFood = this.foodService.updateFoodPrice(food.getId(), food.getPrice());
