@@ -37,13 +37,13 @@ public class Customer {
 	
 	@Column(name = "customer_street")
 	@NotNull
-	@Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Invalid street - must only contain alphanumeric characters !!")
+	@Pattern(regexp = "^[a-zA-Z0-9 ]*$", message = "Invalid street - must only contain alphanumeric characters !!")
 	@Size(min = 2, max = 20, message = "Street must be between 2 and 20 characters long !!")
 	private String street;
 	
 	@Column(name = "customer_postcode")
 	@NotNull
-	@Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Invalid postcode - must only contain alphanumeric characters !!")
+	@Pattern(regexp = "^[a-zA-Z0-9 ]*$", message = "Invalid postcode - must only contain alphanumeric characters !!")
 	@Size(min = 6, max = 10, message = "Street must be between 6 and 10 characters long !!")
 	private String postcode;
 	

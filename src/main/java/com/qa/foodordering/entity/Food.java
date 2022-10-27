@@ -37,8 +37,8 @@ public class Food {
 	private String category; //CATEGORIES INCLUDE: CHICKEN, CHINESE, PIZZA, KEBAB, DESSERTS, ENGLISH
 	
 	@NotNull
-	@Pattern(regexp = "^[A-Za-z]*", message = "Invalid name - must only contain alphabetical characters !!")
-	@Size(min = 2, max = 20, message = "Name must be between 2 and 20 characters long !!")
+	@Pattern(regexp = "^[A-Za-z ]*", message = "Invalid name - must only contain alphabetical characters !!")
+	@Size(min = 2, max = 50, message = "Name must be between 2 and 20 characters long !!")
 	@Column(name = "food_name")
 	private String name;
 	
