@@ -1,14 +1,18 @@
 package com.qa.foodordering.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qa.foodordering.dto.CustomerDto;
 import com.qa.foodordering.entity.Customer;
 import com.qa.foodordering.exception.CustomerAlreadyExistsException;
 import com.qa.foodordering.exception.CustomerNotFoundException;
+import com.qa.foodordering.exception.PassNotCorrectException;
 import com.qa.foodordering.repository.CustomerRepository;
 
 @Service
@@ -16,6 +20,9 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Autowired
 	CustomerRepository customerRepository;
+	
+	@Autowired
+    ModelMapper modelMapper;
 	
 	
 	@Override
@@ -71,7 +78,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Customer updateCustomerDetails(int id, String name, String street, String postcode, String username, String password) throws CustomerNotFoundException{
+	public Customer updateCustomerDetails(int id, String name, String street, String postcode, String password) throws CustomerNotFoundException{
 		
 		Customer updatedCustomer = null;
 		
@@ -81,7 +88,7 @@ public class CustomerServiceImpl implements CustomerService {
 			throw new CustomerNotFoundException();
 		}
 		else {
-			int rows = this.customerRepository.updateCustomerDetails(id, name, street, postcode, username, password);
+			int rows = this.customerRepository.updateCustomerDetails(id, name, street, postcode, password);
 			if (rows > 0) {
 				updatedCustomer = this.customerRepository.findById(id).get();
 			}
@@ -127,6 +134,46 @@ public class CustomerServiceImpl implements CustomerService {
 		return status;	
 	}
 
+	@Override 
+	public CustomerDto login(int id,String password) throws CustomerNotFoundException, PassNotCorrectException {
+		Customer customer;
+		Optional<Customer> customerFoundByIdOptional = this.customerRepository.findById(id);
+ 
+		if (!customerFoundByIdOptional.isPresent()) {
+			throw new CustomerNotFoundException();
+		}else {
+			customer = customerFoundByIdOptional.get();
+			if(customer.getId() == id && customer.getPassword().equals(password)) {
+				System.out.println("successful Login!");
+			}else {
+				throw new PassNotCorrectException();
+			}
+		}
+		return mapToCustomerDto(customer);
+ 
+	}
+
+	@Override
+	public List<CustomerDto> getAllCustomerDtos() {
+		
+		List<Customer> customerList = this.customerRepository.findAll();
+		List<CustomerDto> customerDtoList = new ArrayList<>();
+		
+		customerList.forEach(cust -> {
+			CustomerDto customerDto = CustomerDto.builder().id(cust.getId())
+					.name(cust.getName())
+					.street(cust.getStreet())
+					.postcode(cust.getPostcode())
+					.build();
+			customerDtoList.add(customerDto);
+		});
+		
+		return customerDtoList;
+	}
+	
+	private CustomerDto mapToCustomerDto(Customer customer) {
+	    return this.modelMapper.map(customer, CustomerDto.class);
+	}
 	
 
 }

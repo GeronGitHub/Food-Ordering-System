@@ -30,8 +30,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 	
 	//UPDATING ALL OF THE CUSTOMERS DETAILS
 	@Modifying
-	@Query("update Customer c set c.name = :name, c.street = :street, c.postcode = :postcode, c.username = :username, c.password = :password where c.id = :id")
-	int updateCustomerDetails(int id, String name, String street, String postcode, String username, String password);
+	@Query("update Customer c set c.name = :name, c.street = :street, c.postcode = :postcode, c.password = :password where c.id = :id")
+	int updateCustomerDetails(int id, String name, String street, String postcode, String password);
 	
 	//UPDATING ONLY THE street OF THE CUSTOMER
 	@Modifying
