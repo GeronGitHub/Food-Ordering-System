@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.foodordering.entity.Order;
+import com.qa.foodordering.exception.CustomerNotFoundException;
 import com.qa.foodordering.exception.OrderAlreadyExistsException;
 import com.qa.foodordering.exception.OrderNotFoundException;
 import com.qa.foodordering.service.OrderServiceImpl;
@@ -54,6 +55,26 @@ public class OrderController {
 			responseEntity = new ResponseEntity<>(orderByID, HttpStatus.OK);
 		}
 		catch (OrderNotFoundException e) {
+			throw e;
+		}
+		catch (Exception e) {
+			
+			System.out.println("INTERNAL ERROR HAS OCCURRED.. ");
+			e.printStackTrace();
+		}
+		
+		return responseEntity;
+	}
+	
+	@GetMapping("/orders/customer_id/{id}")
+	public ResponseEntity<?> getOrderByCustomerID(@PathVariable("id") int customerID) throws CustomerNotFoundException{
+		
+		try {
+			
+			List<Order> orderByID = this.orderService.getOrderByCustomerID(customerID);
+			responseEntity = new ResponseEntity<>(orderByID, HttpStatus.OK);
+		}
+		catch (CustomerNotFoundException e) {
 			throw e;
 		}
 		catch (Exception e) {
@@ -108,6 +129,26 @@ public class OrderController {
 		
 		try {
 			Order updatedOrder = this.orderService.updateOrderStatusAndDelivery(order.getId(), order.getStatus(), order.isDelivered());
+			responseEntity = new ResponseEntity<>(updatedOrder, HttpStatus.OK);
+		}
+		catch (OrderNotFoundException e) {
+			throw e;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			responseEntity = new ResponseEntity<>("INTERNAL ERROR HAS OCCURRED..", HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		}
+		
+		return responseEntity;
+		
+	}
+	
+	@PutMapping("/orders/update_food_list")
+	public ResponseEntity<?> updateFoodList(@Valid @RequestBody Order order) throws OrderNotFoundException{
+		
+		try {
+			Order updatedOrder = this.orderService.updateFoodList(order.getId(), order.getFoodList());
 			responseEntity = new ResponseEntity<>(updatedOrder, HttpStatus.OK);
 		}
 		catch (OrderNotFoundException e) {

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.qa.foodordering.dto.CustomerDto;
 import com.qa.foodordering.entity.Customer;
+import com.qa.foodordering.entity.Order;
 import com.qa.foodordering.exception.CustomerAlreadyExistsException;
 import com.qa.foodordering.exception.CustomerNotFoundException;
 import com.qa.foodordering.exception.PassNotCorrectException;
@@ -116,6 +117,14 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		return updatedCustomer;
 	}
+	
+	/* TO UPDATE ORDER ON CUSTOMER OBJECT
+	 * @Override public Customer updateOrder(int id, List<Order> orderList) throws
+	 * CustomerNotFoundException { Customer updatedCustomer = null;
+	 * 
+	 * Optional<Customer> optionalCustomerFoundByID =
+	 * this.customerRepository.findById(id); return updatedCustomer; }
+	 */
 
 	@Override
 	public boolean deleteCustomer(int id) throws CustomerNotFoundException {
@@ -174,6 +183,8 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerDto mapToCustomerDto(Customer customer) {
 	    return this.modelMapper.map(customer, CustomerDto.class);
 	}
+
+	
 	
 
 }

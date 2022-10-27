@@ -1,10 +1,16 @@
 package com.qa.foodordering.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -52,6 +58,5 @@ public class Customer {
 	@Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Invalid password - must only contain alphanumeric characters !!")
 	@Size(min = 6, max = 20, message = "Password must be between 6 and 20 characters long !!")
 	private String password;
-	
 	
 }
