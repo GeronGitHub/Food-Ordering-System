@@ -42,7 +42,7 @@ public class CustomerRepositoryTest {
 		
 		c1 = new Customer(1, "Geron", "Camberwell", "SE5 0EB", "geron12");
 		c2 = new Customer(2, "Sho", "Peckham", "SE13 7QH", "sho12");
-		c3 = new Customer(3, "Michael", "Brixton", "SE9 3TB", "michael12");
+		c3 = new Customer(3, "May", "Brixton", "SE9 3TB", "may12");
 		customerList = Arrays.asList(c1, c2, c3);
 		
 	}
