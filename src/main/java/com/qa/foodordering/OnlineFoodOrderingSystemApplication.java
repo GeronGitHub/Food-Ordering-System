@@ -1,5 +1,6 @@
 package com.qa.foodordering;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,11 @@ import springfox.documentation.spring.web.plugins.Docket;
 @SpringBootApplication
 @EnableWebMvc
 public class OnlineFoodOrderingSystemApplication {
+	
+	@Bean
+	public ModelMapper modelMapper() {
+	    return new ModelMapper();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineFoodOrderingSystemApplication.class, args);

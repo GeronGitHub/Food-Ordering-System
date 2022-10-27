@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.qa.foodordering.dto.CustomerDto;
 import com.qa.foodordering.entity.Customer;
 import com.qa.foodordering.exception.CustomerAlreadyExistsException;
 import com.qa.foodordering.exception.CustomerNotFoundException;
+import com.qa.foodordering.exception.PassNotCorrectException;
 import com.qa.foodordering.service.CustomerServiceImpl;
 
 @RestController
@@ -82,8 +84,23 @@ public class CustomerController {
 		return responseEntity;
 	}
 	
+	@GetMapping("/customers/dto_details")
+	public ResponseEntity<?> getAllDtoCustomers(){
 	
-	@PostMapping("/customers")
+		try {
+			List<CustomerDto> dtoCustomerList = this.customerService.getAllCustomerDtos();
+			responseEntity = new ResponseEntity<>(dtoCustomerList, HttpStatus.OK);
+		}
+		catch (Exception e) {
+			responseEntity = new ResponseEntity<>("INTERNAL ERROR HAS OCCURRED..", HttpStatus.INTERNAL_SERVER_ERROR);
+			e.printStackTrace();
+		}
+		
+		return responseEntity;
+	}
+	
+	
+	@PostMapping("/signup")
 	public ResponseEntity<?> addCustomer(@Valid @RequestBody Customer customer) throws CustomerAlreadyExistsException{
 		
 		try {
@@ -101,11 +118,29 @@ public class CustomerController {
 		return responseEntity;
 	}
 	
+	
+	@PostMapping("/login/{id}/{pass}")
+	public ResponseEntity<?> login(@PathVariable("id") int id,@PathVariable("pass") String pass) throws PassNotCorrectException, CustomerNotFoundException{
+		try {
+ 
+			CustomerDto CustomerLogin = this.customerService.login(id, pass);
+			responseEntity = new ResponseEntity<>(CustomerLogin, HttpStatus.OK);
+		}catch(PassNotCorrectException e) {
+			throw e;
+		}catch(CustomerNotFoundException e) {
+			throw e;
+		}catch(Exception e) {
+			e.printStackTrace();
+			responseEntity = new ResponseEntity<>("Some internal error has occured..", HttpStatus.INTERNAL_SERVER_ERROR);	
+		}
+		return responseEntity;
+	}
+	
 	@PutMapping("/customers")
 	public ResponseEntity<?> updateCustomerDetails(@Valid @RequestBody Customer customer) throws CustomerNotFoundException{
 		
 		try {
-			Customer updatedCustomer = this.customerService.updateCustomerDetails(customer.getId(), customer.getName(), customer.getStreet(), customer.getPostcode(), customer.getUsername(), customer.getPassword());
+			Customer updatedCustomer = this.customerService.updateCustomerDetails(customer.getId(), customer.getName(), customer.getStreet(), customer.getPostcode(), customer.getPassword());
 			responseEntity = new ResponseEntity<>(updatedCustomer, HttpStatus.OK);
 		}
 		catch (CustomerNotFoundException e) {

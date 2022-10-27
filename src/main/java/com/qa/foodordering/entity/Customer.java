@@ -47,12 +47,6 @@ public class Customer {
 	@Size(min = 6, max = 10, message = "Street must be between 6 and 10 characters long !!")
 	private String postcode;
 	
-	@Column(name = "customer_username")
-	@NotNull
-	@Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Invalid username - must only contain alphanumeric characters !!")
-	@Size(min = 2, max = 20, message = "Username must be between 2 and 20 characters long !!")
-	private String username;
-	
 	@Column(name = "customer_password")
 	@NotNull
 	@Pattern(regexp = "^[a-zA-Z0-9]*$", message = "Invalid password - must only contain alphanumeric characters !!")
