@@ -42,7 +42,7 @@ public class FoodRepositoryTest {
 		
 		f1 = new Food(1, "Chicken", "Fried Chicken", 5.99, false);
 		f2 = new Food(2, "Chinese", "Noodles with Black Bean Sauce", 13.99, true);
-		f3 = new Food(3, "Dessert", "Chocolate Fudge Cake", 9.99, false);
+		f3 = new Food(3, "Dessert", "Chocolate Fudge Cakes", 9.99, false);
 		foodList = Arrays.asList(f1, f2, f3);
 		
 	}
