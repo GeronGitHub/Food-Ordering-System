@@ -37,6 +37,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 	@Modifying
 	@Query("update Customer c set c.street = :street, c.postcode = :postcode where c.id = :id")
 	int updateCustomerStreetAndPostCode(int id, String street, String postcode);
-
+	
 }
 

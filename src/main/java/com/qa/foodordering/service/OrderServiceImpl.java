@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qa.foodordering.entity.Food;
 import com.qa.foodordering.entity.Order;
+import com.qa.foodordering.exception.CustomerNotFoundException;
 import com.qa.foodordering.exception.OrderAlreadyExistsException;
 import com.qa.foodordering.exception.OrderNotFoundException;
 import com.qa.foodordering.repository.OrderRepository;
@@ -42,12 +44,6 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<Order> getOrderByCustomerID(int customerID) {
-		
-		return this.orderRepository.findByCustomerID(customerID);
-	}
-
-	@Override
 	public List<Order> getOrderByStatus(String status) {
 		
 		return this.orderRepository.findByStatus(status);
@@ -63,6 +59,12 @@ public class OrderServiceImpl implements OrderService {
 	public List<Order> getOrderByValue(double value) {
 		
 		return this.orderRepository.findByValue(value);
+	}
+	
+	@Override
+	public List<Order> getOrderByCustomerID(int customerID) throws CustomerNotFoundException{
+	
+		return this.orderRepository.findByCustomerID(customerID);
 	}
 
 	@Override
@@ -88,7 +90,7 @@ public class OrderServiceImpl implements OrderService {
 			throw new OrderNotFoundException();
 		}
 		else {
-			int rows = this.orderRepository.updateAllOrderDetails(id, date, customerID, status, delivered, value);
+			int rows = this.orderRepository.updateAllOrderDetails(id, date, status, delivered, value);
 			if (rows > 0) {
 				updatedOrder = this.orderRepository.findById(id).get();
 			}
@@ -115,6 +117,25 @@ public class OrderServiceImpl implements OrderService {
 
 		return updatedOrder;
 	}
+	
+	@Override
+	public Order updateFoodList(int id, List<Food> foodList) throws OrderNotFoundException {
+		Order updatedOrder = null;
+		
+		Optional<Order> optionalOrderFoundByID = this.orderRepository.findById(id);
+		
+		if (!optionalOrderFoundByID.isPresent()) {
+			throw new OrderNotFoundException();
+		}
+		else {
+			int rows = this.orderRepository.updateFoodList(id, foodList);
+			if (rows > 0) {
+				updatedOrder = this.orderRepository.findById(id).get();
+			}
+		}
+
+		return updatedOrder;
+	}
 
 	@Override
 	public boolean deleteOrder(int id) throws OrderNotFoundException {
@@ -132,5 +153,9 @@ public class OrderServiceImpl implements OrderService {
 		
 		return status;	
 	}
+
+	
+
+	
 
 }

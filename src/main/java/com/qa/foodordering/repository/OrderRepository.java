@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.qa.foodordering.entity.Food;
 import com.qa.foodordering.entity.Order;
 
 @Repository
@@ -18,11 +19,11 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 	//FIND ORDER BY DATE
 	List<Order> findByDate(String date);
 	
-	//FIND ORDER BY CUSTOMER ID
-	List<Order> findByCustomerID(int customerID);
-	
 	//FIND ORDER BY ORDER STATUS
 	List<Order> findByStatus(String status);
+	
+	//FIND ORDER BY CUSTOMER ID
+	List<Order> findByCustomerID(int customerID);
 	
 	//FIND ORDER BY ORDER DELIVERED
 	List<Order> findByDelivered(boolean delivered);
@@ -32,12 +33,17 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 	
 	//UPDATING ALL ORDER DETAILS
 	@Modifying
-	@Query("update Order o set o.date = :date, o.customerID = :customerID, o.status = :status, o.delivered = :delivered, o.value = :value where o.id = :id")
-	int updateAllOrderDetails(int id, String date, int customerID, String status, boolean delivered, double value);
+	@Query("update Order o set o.date = :date, o.status = :status, o.delivered = :delivered, o.value = :value where o.id = :id")
+	int updateAllOrderDetails(int id, String date, String status, boolean delivered, double value);
 	
 	//UPDATING ORDER STATUS AND DELIVERY NOTICE
 	@Modifying
 	@Query("update Order o set o.status = :status, o.delivered = :delivered where o.id = :id")
 	int updateOrderStatusAndDelivery(int id, String status, boolean delivered);
+	
+	@Modifying
+	@Query("update Order o set o.foodList = :foodList where o.id = :id")
+	int updateFoodList(int id, List<Food> foodList);
+	
 
 }
