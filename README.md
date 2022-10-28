@@ -3,14 +3,12 @@
 The objective of this assignment was to create from scratch a web service. Simply put, my project was to allow the customer to be able to order some food online.
 ### Problem Statement
 
-Create a web service using using Bootstrap with the below mentioned structure
-	- Controller layer
-	- Service layer
-	- Repository layer
-	- Multiple Entities
-	- Exception handler
-	- Service layer
-	- Repository layer
+Create a web service using using Bootstrap with the structure:
+1. Controller layer
+2. Service layer
+3. Repository layer
+4. Multiple Entities
+5. Exception handler
 
 
 ### Tech Stack 
@@ -33,7 +31,7 @@ This application is build using the following tech stack:
 
 # End Points
 
-Above are some of the notable end points.
+Below are some of the notable end points.
 
 ```bash
 http://localhost:8080/api/v1/customers
