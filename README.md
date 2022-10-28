@@ -25,39 +25,46 @@ This application is build using the following tech stack:
 
 ### Steps
 
-1. Add some movies data in db.json ( sample movie object is provided in db.json)
-2. After adding the movies, run the command `npm run dbserver`
-3. Fetch the movies from db.json using fetch API at the API URL `http://localhost:3000/movies`
-4. Display these movies in index.html using Bootstrap card component ( as shown in the image )
-5. When the user clicks on the favourite icon , add the movie to the favouties using fetch API Post request to the API URL `http://localhost:3000/favourites`
-6. If the movie is already favourited, if the user clicks on favourite icon, remove the movie from the favourites in db.json and update the UI
-7. If user searches for a specific movie by entering the movie name and clicks on submit button, update the UI with the searched movies list
+1. Create Customers by using the end point provided below, sending it as a POST request.
+2. Repeat step 1 to create an Order for your customer to allow them to add their food order.
+3. Fetch the data of any given customer using a GET request with the end point "http://localhost:8080/api/v1/customers/{id}"
+4. To remove any given data, use the DELETE mapping and the end point "http://localhost:8080/api/v1/customers/{id}", where "customers" can be replaced with "orders" or "food".
+5. For any other given operation you wish to accomplish, use the multitude of end points to be able to implement a functionality to the database.
 
 # End Points
+
+Above are some of the notable end points.
+
 ```bash
 http://localhost:8080/api/v1/customers
 ```
+
 ```bash
 http://localhost:8080/api/v1/orders
 ```
 ```bash
 http://localhost:8080/api/v1/food
 ```
+The above end points are all used for get, post and put mappings to be able to get or update each object in that field or if it doesn't exist then to create a new object.
+
 ```bash
 http://localhost:8080/api/v1/signup
 ```
+
+The sign up post mapping is used to create a customer and allow for a user to essentially create their account to be able to order.
+
 ```bash
 http://localhost:8080/api/v1/login/{id}/{pass}
 ```
 ```bash
 http://localhost:8080/api/v1/orders/{id}
 ```
+These two above end points both have parameters required to be able to retrieve the data when there are many instances of accounts or orders that need to be filtered out.
+
 ```bash
 http://localhost:8080/api/v1//food/update_price
 ```
 
-
-Above are some of the notable end points.
 
 ### Signing Up a new Customer
 
