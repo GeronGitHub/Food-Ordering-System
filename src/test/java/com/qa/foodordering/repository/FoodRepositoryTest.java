@@ -59,7 +59,7 @@ public class FoodRepositoryTest {
 	public void given_Food_To_Save_Return_Saved_Food() {
 		Food savedFood = foodRepository.save(f1);
 		assertNotNull(savedFood);
-		assertEquals("FriedChicken", savedFood.getName());
+		assertEquals("Fried Chicken", savedFood.getName());
 	}
 	
 	@Test
