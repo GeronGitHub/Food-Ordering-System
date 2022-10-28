@@ -1,14 +1,15 @@
 # Food-Ordering-System
 
-The objective of this assignment was to create from scratch a web service. Simply put, my project was to allow the customer to be able to order some food online.
-### Problem Statement
+### Objective
 
-Create a web service using using Bootstrap with the structure:
+The objective of this assignment was to create from scratch a web service. Simply put, my project was to allow the customer to be able to order some food online. The user can search for food in the menu and add food into their order. The structure of the project had to include the layers listed below:
+
 1. Controller layer
 2. Service layer
 3. Repository layer
 4. Multiple Entities
 5. Exception handler
+
 
 
 ### Tech Stack 
@@ -31,16 +32,11 @@ This application is build using the following tech stack:
 
 # End Points
 
-Below are some of the notable end points.
+This section displays some notable end points.
 
 ```bash
 http://localhost:8080/api/v1/customers
-```
-
-```bash
 http://localhost:8080/api/v1/orders
-```
-```bash
 http://localhost:8080/api/v1/food
 ```
 The above end points are all used for get, post and put mappings to be able to get or update each object in that field or if it doesn't exist then to create a new object.
