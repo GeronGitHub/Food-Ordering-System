@@ -14,11 +14,11 @@ Create a web service using using Bootstrap with the structure:
 ### Tech Stack 
 
 This application is build using the following tech stack:
-	- Spring Boot 2.7.5
-	- Java SE 17
-	- Maven 3.8.6
-	- MySQL 8.0.31
-	- Swagger
+1. Spring Boot 2.7.5
+2. Java SE 17
+3. Maven 3.8.6
+4. MySQL 8.0.31
+5. Swagger
 
 
 ### Steps
