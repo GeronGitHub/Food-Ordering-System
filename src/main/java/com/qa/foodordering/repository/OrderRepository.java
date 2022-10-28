@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.qa.foodordering.entity.Food;
 import com.qa.foodordering.entity.Order;
 
 @Repository
@@ -40,10 +39,6 @@ public interface OrderRepository extends JpaRepository<Order, Integer>{
 	@Modifying
 	@Query("update Order o set o.status = :status, o.delivered = :delivered where o.id = :id")
 	int updateOrderStatusAndDelivery(int id, String status, boolean delivered);
-	
-	@Modifying
-	@Query("update Order o set o.foodList = :foodList where o.id = :id")
-	int updateFoodList(int id, List<Food> foodList);
 	
 
 }

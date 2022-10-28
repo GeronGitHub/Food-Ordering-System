@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qa.foodordering.entity.Food;
 import com.qa.foodordering.entity.Order;
 import com.qa.foodordering.exception.CustomerNotFoundException;
 import com.qa.foodordering.exception.OrderAlreadyExistsException;
@@ -118,24 +117,6 @@ public class OrderServiceImpl implements OrderService {
 		return updatedOrder;
 	}
 	
-	@Override
-	public Order updateFoodList(int id, List<Food> foodList) throws OrderNotFoundException {
-		Order updatedOrder = null;
-		
-		Optional<Order> optionalOrderFoundByID = this.orderRepository.findById(id);
-		
-		if (!optionalOrderFoundByID.isPresent()) {
-			throw new OrderNotFoundException();
-		}
-		else {
-			int rows = this.orderRepository.updateFoodList(id, foodList);
-			if (rows > 0) {
-				updatedOrder = this.orderRepository.findById(id).get();
-			}
-		}
-
-		return updatedOrder;
-	}
 
 	@Override
 	public boolean deleteOrder(int id) throws OrderNotFoundException {
