@@ -40,9 +40,9 @@ public class CustomerRepositoryTest {
 		//CREATING THE DATA NEEDED BEFORE EACH TEST CASE
 		
 		
-		c1 = new Customer(1, "Geron", "Camberwell", "SE5 0EB", "geron12");
-		c2 = new Customer(2, "Sho", "Peckham", "SE13 7QH", "sho12");
-		c3 = new Customer(3, "May", "Brixton", "SE9 3TB", "may12");
+		c1 = new Customer(1, "Geron", "Camberwell", "SE5 0EB", "geron123");
+		c2 = new Customer(2, "Sho", "Peckham", "SE13 7QH", "sho123");
+		c3 = new Customer(3, "May", "Brixton", "SE9 3TB", "may123");
 		customerList = Arrays.asList(c1, c2, c3);
 		
 	}
