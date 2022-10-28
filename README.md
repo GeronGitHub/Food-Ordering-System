@@ -1,7 +1,6 @@
 # Food-Ordering-System
 
-This objective of this assignment is to create a web page which displays movies with movie title, poster , description, directorname and the rating. The user can favourite the movie by clicking the favourite icon . The use can also search for a specific movie using the search option in the header. The user can see all his favourite movies by clicking on Favourite Movies link in the header
-
+The objective of this assignment was to create from scratch a web service. Simply put, my project was to allow the customer to be able to order some food online.
 ### Problem Statement
 
 Create a web page using using Bootstrap with the below mentioned components
@@ -16,7 +15,12 @@ Create a web page using using Bootstrap with the below mentioned components
 
 ### Tech Stack 
 
-This application is build using the following tech stack
+This application is build using the following tech stack:
+	- Spring Boot 2.7.5
+	- Java SE 17
+	- Maven 3.8.6
+	- MySQL 8.0.31
+	- Swagger
 
 
 ### Steps
@@ -31,7 +35,13 @@ This application is build using the following tech stack
 
 # End Points
 ```bash
-http://localhost:8083/api/v1/employees
+http://localhost:8080/api/v1/customers
+```
+```bash
+http://localhost:8080/api/v1/orders
+```
+```bash
+http://localhost:8080/api/v1/food
 ```
 
 
@@ -43,11 +53,11 @@ Design the page as per the image
 
 ### Search Results
 
-![Image Not Found](/images/SearchOutputScreen.png)
+![Image Not Found](/images/getAllCustomersImage.png)
 
 ### Favourite Results
 
-![Image Not Found](/images/FavouriteMovies_Output_Screen.png)
+![Image Not Found](/images/updateFoodDetailsImage.png)
 
 ### Instructions
 
