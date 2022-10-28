@@ -1,7 +1,6 @@
 # Food-Ordering-System
 
 The objective of this assignment was to create from scratch a web service. Simply put, my project was to allow the customer to be able to order some food online.
-
 ### Problem Statement
 
 Create a web service using using Bootstrap with the below mentioned structure
@@ -12,6 +11,7 @@ Create a web service using using Bootstrap with the below mentioned structure
 	- Exception handler
 	- Service layer
 	- Repository layer
+
 
 ### Tech Stack 
 

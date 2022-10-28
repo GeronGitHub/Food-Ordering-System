@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.qa.foodordering.entity.Food;
 import com.qa.foodordering.entity.Order;
 import com.qa.foodordering.exception.CustomerNotFoundException;
 import com.qa.foodordering.exception.OrderAlreadyExistsException;
@@ -24,6 +23,5 @@ public interface OrderService {
 	public Order addOrder(Order order) throws OrderAlreadyExistsException;
 	public Order updateAllOrderDetails(int id, String date, int customerID, String status, boolean delivered, double value) throws OrderNotFoundException;
 	public Order updateOrderStatusAndDelivery(int id, String status, boolean delivered) throws OrderNotFoundException;
-	public Order updateFoodList(int id, List<Food> foodList) throws OrderNotFoundException;
 	public boolean deleteOrder(int id) throws OrderNotFoundException;
 }
