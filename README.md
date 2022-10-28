@@ -14,7 +14,7 @@ The objective of this assignment was to create from scratch a web service. Simpl
 
 ### Tech Stack 
 
-This application is build using the following tech stack:
+This application is built using the following tech stack:
 1. Spring Boot 2.7.5
 2. Java SE 17
 3. Maven 3.8.6
