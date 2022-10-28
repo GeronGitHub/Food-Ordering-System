@@ -1,17 +1,17 @@
 # Food-Ordering-System
 
 The objective of this assignment was to create from scratch a web service. Simply put, my project was to allow the customer to be able to order some food online.
+
 ### Problem Statement
 
-Create a web page using using Bootstrap with the below mentioned components
-1. Navbar 
-    This should contain the company logo ( logo.png is provided under images folder, use the same)
-    Application Title ( My Favourite Movies )
-    A Bootstrap form with a search box and a button
-
-2. section with container class
-3. card component for displaying each movie
-
+Create a web service using using Bootstrap with the below mentioned structure
+	- Controller layer
+	- Service layer
+	- Repository layer
+	- Multiple Entities
+	- Exception handler
+	- Service layer
+	- Repository layer
 
 ### Tech Stack 
 
@@ -43,27 +43,34 @@ http://localhost:8080/api/v1/orders
 ```bash
 http://localhost:8080/api/v1/food
 ```
+```bash
+http://localhost:8080/api/v1/signup
+```
+```bash
+http://localhost:8080/api/v1/login/{id}/{pass}
+```
+```bash
+http://localhost:8080/api/v1/orders/{id}
+```
+```bash
+http://localhost:8080/api/v1//food/update_price
+```
 
 
-Design the page as per the image
+Above are some of the notable end points.
 
-### Home Page
+### Signing Up a new Customer
 
 ![Image Not Found](/images/addCustomerImage.png)
 
-### Search Results
+### Retrieving all Customers in the database
 
 ![Image Not Found](/images/getAllCustomersImage.png)
 
-### Favourite Results
+### Updating details of existing data
 
 ![Image Not Found](/images/updateFoodDetailsImage.png)
 
-### Instructions
+### Reflection
 
-1. Page must have title, favicon, description and meta tags
-2. Must use Bootstrap framework and its components navbar, form, card, grid system
-3. Use descriptive class names for HTML elements to apply the CSS
-4. Use proper CSS3 selectors
-5. Use proper indentation
-6. Boilerplate contains the images, font-family, colors. Use them to get the exact output
+During this project, there were many obstacles to face and overcome and each one took a level of dedication and research to fully understand the concept and be able to apply it to a unique project. Throughout the implementation of this project, I learned the skills necessary to develop quality code and add structure to ensure a high standard of work produced.
